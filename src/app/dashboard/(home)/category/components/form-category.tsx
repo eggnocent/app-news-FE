@@ -81,7 +81,7 @@ const FormCategoryPage: FC<FormCategoryProps> = ({ type, defaultValues }) => {
         showConfirmButton: false,
         timer: 1500,
       });
-      router.push("/dashboard/category"); // Redirect jika berhasil
+      router.push("/dashboard/category");
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred";
       Swal.fire({

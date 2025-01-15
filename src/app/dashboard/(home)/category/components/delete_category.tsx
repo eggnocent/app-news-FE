@@ -8,7 +8,7 @@ import { Trash } from "lucide-react";
 
 interface DeleteCategoryPageProps {
     id: number;
-    onSuccess?: () => void; // Tambahkan callback opsional untuk memperbarui data setelah penghapusan
+    onSuccess?: () => void;
 }
 
 const DeleteCategory: FC<DeleteCategoryPageProps> = ({ id, onSuccess }) => {
@@ -25,7 +25,7 @@ const DeleteCategory: FC<DeleteCategoryPageProps> = ({ id, onSuccess }) => {
 
         if (result.isConfirmed) {
             try {
-                await deleteCategory(id); // Panggil fungsi penghapusan kategori
+                await deleteCategory(id); 
                 Swal.fire({
                     icon: "success",
                     title: "Berhasil",
@@ -35,11 +35,9 @@ const DeleteCategory: FC<DeleteCategoryPageProps> = ({ id, onSuccess }) => {
                     timer: 1500,
                 });
 
-                // Jika callback onSuccess ada, panggil untuk memperbarui data
                 if (onSuccess) {
                     onSuccess();
                 } else {
-                    // Jika tidak ada callback, reload halaman
                     window.location.reload();
                 }
             } catch (error) {

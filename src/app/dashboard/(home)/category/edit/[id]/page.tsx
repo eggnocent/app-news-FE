@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation"; // Gunakan useParams
+import { useParams } from "next/navigation";
 import { Category } from "@/model/Category";
 import { ApiResponse } from "@/model/ApiResponse";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -12,9 +12,8 @@ import { AlertCircle } from "lucide-react";
 const EditCategoryPage = () => {
     setUpInterception();
 
-    // Mengambil params dari URL
     const params = useParams();
-    const id = params?.id; // Pastikan id adalah string dari URL
+    const id = params?.id;
 
     const [category, setCategory] = useState<Category | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
@@ -25,14 +24,12 @@ const EditCategoryPage = () => {
             try {
                 setLoading(true);
 
-                // Validasi id
                 if (!id) {
                     throw new Error("ID tidak ditemukan di params");
                 }
 
-                // Fetch data kategori berdasarkan ID
                 const response = await axiosInstance.get<ApiResponse<Category>>(
-                    `/admin/categories/get-one-category/${id}` // Sesuaikan endpoint dengan backend
+                    `/admin/categories/get-one-category/${id}`
                 );
                 setCategory(response.data.data);
             } catch (err) {

@@ -5,7 +5,6 @@ export interface CreateCategoryRequest {
     title: string;
 }
 
-// Fungsi untuk membuat kategori
 export const createCategory = async (
     categoryData: CreateCategoryRequest
 ): Promise<Category> => {
@@ -22,7 +21,7 @@ export const createCategory = async (
 
 export const editCategory = async (
     categoryData: CreateCategoryRequest,
-    categoryId: number // Tambahkan parameter categoryId
+    categoryId: number
 ): Promise<Category> => {
     try {
         const response = await axiosInstance.put<Category>(
